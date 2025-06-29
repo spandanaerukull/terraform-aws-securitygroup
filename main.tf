@@ -3,15 +3,14 @@ resource "aws_security_group" "main" {
   description = var.sg_description
   vpc_id      = var.vpc_id
 
-  egress =[
-  {
+  egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1" # -1 means all protocols
     cidr_blocks = ["0.0.0.0/0"] # Allow all outbound traffic
     ipv6_cidr_blocks = ["::/0"] # Allow all outbound IPv6 traffic
   }
-  ]
+  
 
   tags = merge(
     var.sg_tags,
